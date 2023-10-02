@@ -20,13 +20,15 @@ connectDB();
 const app = express();
 
 //middelwares
+app.use(express.json());
+app.use (express.urlencoded({extended:false}))
+// app.use(morgan("dev"));
 app.use(cors(
   {
-    origin: ['https://conterials-frontend.onrender.com/']
+    origin: ["https://conterials-frontend.onrender.com/", "http://localhost:3000"]
   }
 ));
-app.use(express.json());
-// app.use(morgan("dev"));
+
 
 //routes
 // app.use("/api/v1/auth", authRoutes);
