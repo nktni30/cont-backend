@@ -1,16 +1,16 @@
-const express =require( "express");
-const dotenv =require( "dotenv");
+const express = require("express");
+const dotenv = require("dotenv");
 // const morgan = require("morgan");
 const connectDB = require("./config/database.js");
-const categoryRoutes =require( "./routers/categoryRoutes.js");
+const categoryRoutes = require("./routers/categoryRoutes.js");
 const productRoutes = require('./routers/productRoutes.js')
 const brandRoutes = require('./routers/brandRoutes.js')
 const subcategoryRoutes = require('./routers/subcategoryRoutes.js')
 
-const cors =require( "cors");
+const cors = require("cors");
 
 //configure env
-// dotenv.config({path:"./config/config.env"});
+dotenv.config({ path: "./config/config.env" });
 dotenv.config();
 
 //databse config
@@ -22,7 +22,7 @@ const app = express();
 //middelwares
 app.use(cors(
   {
-    origin: ['https://conterials-frontend.onrender.com']
+    origin: ['https://conterials-frontend.onrender.com/']
   }
 ));
 app.use(express.json());
@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 //PORT
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 
 //run listen
 app.listen(PORT, () => {
