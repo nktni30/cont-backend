@@ -24,9 +24,12 @@ app.use(express.json());
 app.use (express.urlencoded({extended:false}))
 // app.use(morgan("dev"));
 app.use(cors( {
-  origin: 'https://conterials-frontend.onrender.com/'
+  origin: ['https://conterials-frontend.onrender.com'],
+  methods:["GET", "PUT", "POST"],
+  credentials: true,
 }
 ));
+
 
 
 //routes
