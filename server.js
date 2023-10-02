@@ -21,10 +21,10 @@ const app = express();
 
 //middelwares
 app.use(express.json());
-app.use (express.urlencoded({extended:false}))
+
 // app.use(morgan("dev"));
 app.use(cors( {
-  origin: ['https://conterials-frontend.onrender.com', 'https://www.conterials.com'],
+  origin: ['https://conterials-frontend.onrender.com', 'https://www.conterials.com', 'http://localhost:3000'],
   methods:["GET", "PUT", "POST"],
   credentials: true,
 }
@@ -40,8 +40,12 @@ app.use("/api/v1/brand", brandRoutes);
 app.use("/api/v1/subcategory", subcategoryRoutes);
 
 //rest api
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to ecommerce app</h1>");
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 //PORT
